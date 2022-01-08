@@ -4,6 +4,24 @@
 <h1> Home</h1>
 <p> <%= ContentHome  %> </p>
 
+
+
+<!-- for(var i=0;i<items.length;i++){ %>
+ console.log(items[i].title); %>
+ } %>
+-->
+
+<% items.forEach(function(element){ %>
+
+<h1><%= element.title %></h1>
+<p><%= element.content %></p>
+<% }); %>
+
+
+
+
+
+
 <%- include("partials/footer")-%>
 
 
