@@ -18,7 +18,7 @@ app.use(express.static("public"));
 
 
 
-app.get("/home",function(req,res){
+app.get("/",function(req,res){
   res.render("home",{ContentHome:homeStartingContent});
 })
 
@@ -32,10 +32,15 @@ app.get("/contact",function(req,res){
 })
 
 
+app.get("/compose",function(req,res){
+  res.render("compose");
 
+});
 
-
-
+app.post("/compose",function(req,res){
+let type=req.body.typo;
+console.log(type);
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
