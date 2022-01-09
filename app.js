@@ -3,13 +3,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+var _ = require('lodash');
 
 let app = express();
 
+
+app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
+
+
 
 const items=[];
 
@@ -21,13 +25,9 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 app.get("/",function(req,res){
   res.render("home",{
     ContentHome:homeStartingContent,
-    items:items,
-
-
+    items:items
   });
   //console.log(items);
-
-
 })
 
 
@@ -57,6 +57,29 @@ app.post("/compose",function(req,res){
  res.redirect("/");
 
 });
+
+//DYNAMIC URL
+app.get("/items/:postName",function(req,res){
+const requestedTitle = _.lowerCase(req.params.postName);
+
+  items.forEach(function(post){
+  const storeTitle = _.lowerCase(post.title);
+
+   if(requestedTitle === storeTitle )
+   {
+   //console.log("Match Found!");
+   res.render("post",{
+     title:post.title,
+     content:post.content
+   });
+   }
+
+    });
+});
+
+
+
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
