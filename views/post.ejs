@@ -4,4 +4,14 @@
 <h1> <%= title %> </h1>
 <p> <%= content %> </p>
 
+<div class="btn-posts">
+  <form class="btn-posts" action="/delete" method="post">
+    <button class="btn btn-danger btn-lg" type="submit" name="deletePost"   value="<%= title %>">Delete Post</button>
+
+
+  <button class="btn btn-success btn-lg" type="submit" name="button" onclick="location.href = '/';">Return Home</button>
+  </form>
+</div>
+
+
 <%- include("partials/footer") -%>

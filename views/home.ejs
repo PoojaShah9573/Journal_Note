@@ -1,30 +1,22 @@
-<%- include("partials/header")-%>
+
+<%- include("partials/header"); -%>
+
+    <h1 style= "font-size: 44px; font-family:Monotype Corsiva;
+    line-height: inherit; font-family: ui-sans-serif;">Welcome to my Diary ! </h1>
+    <p> <%= startingContent %> </p>
 
 
-<h1> New Beginning </h1>
-<p> <%= ContentHome  %> </p>
+  <%  posts.forEach(function(post){ %>
 
-
-
-<!-- for(var i=0;i<items.length;i++){ %>
- console.log(items[i].title); %>
- } %>
--->
-
-<% items.forEach(function(element){ %>
-
-<h1><%= element.title %></h1>
-<p>
-  <%= element.content.substring(0,100) + "......"  %>
-   <a href ="/items/<%=  element.title  %>"> Read more </a>
-</p>
-<% }); %>
+    <h1><%=post.title%></h1>
+    <p>
+    <%=post.content.substring(0, 100) + " ..."%>
+    <a href="/posts/<%=post._id%>">Read More</a>
 
 
 
 
+     </p>
+   <% }) %>
 
-
-<%- include("partials/footer")-%>
-
-
+<%- include("partials/footer"); -%>
